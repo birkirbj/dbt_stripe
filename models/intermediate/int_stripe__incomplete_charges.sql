@@ -8,6 +8,7 @@ with charge as (
 select 
   created_at,
   customer_id,
-  amount
+  amount,
+  currency
 from charge
 where not is_captured
