@@ -16,6 +16,7 @@ with balance_transaction_joined as (
             then {{ date_timezone('available_on') }}  
             else {{ date_timezone('created_at') }} 
       end as date,
+    currency,
     sum(case when type in ('charge', 'payment') 
           then amount 
           else 0 end) as total_sales,
@@ -53,7 +54,7 @@ with balance_transaction_joined as (
             then coalesce(source, payout_id) 
             else null end) as total_adjustments_count
   from balance_transaction_joined
-  group by 1
+  group by 1,2
 
 ), daily_failed_charges as (
 
