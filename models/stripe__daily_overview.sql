@@ -70,6 +70,7 @@ with balance_transaction_joined as (
 
 select
       daily_balance_transactions.date,
+      daily_balance_transactions.currency,
       daily_balance_transactions.total_sales/100.0 as total_sales,
       daily_balance_transactions.total_refunds/100.0 as total_refunds,
       daily_balance_transactions.total_adjustments/100.0 as total_adjustments,
