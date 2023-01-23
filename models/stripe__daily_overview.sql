@@ -60,10 +60,11 @@ with balance_transaction_joined as (
 
     select
       {{ date_timezone('created_at') }} as date,
+      currency,
       count(*) as total_failed_charge_count,
       sum(amount) as total_failed_charge_amount
     from incomplete_charges
-    group by 1
+    group by 1,2
 
 )
 
