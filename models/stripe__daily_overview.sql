@@ -89,4 +89,5 @@ select
 from daily_balance_transactions
 
 left join daily_failed_charges 
-      on daily_balance_transactions.date = daily_failed_charges.date
+      on daily_balance_transactions.date = daily_failed_charges.date and daily_balance_transactions.currency = daily_failed_charges.currency
+      
